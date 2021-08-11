@@ -59,6 +59,7 @@ Listed below are the currently known issues and limitations of code generation.
 * Currently only classification, regression, and forecasting tasks are supported.
 * Streaming datasets are not supported.
 * DNN trained models are not supported.
+* `DataTransformer._engineered_feature_names_class` is currently loaded from a bytestring to map raw to engineered feature names, which may be problematic if the list of featurizers changes.
 
 ## Contributing
 
