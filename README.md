@@ -1,14 +1,52 @@
-# Project
+# AutoML Code Gen Preview
 
-> This repo has been populated by an initial template to help get you started. Please
-> make sure to update the content to build a great experience for community-building.
+## Setup
+To start using the AutoML Code Gen Preview, at this time you must use the AzureML Python SDK. Instructions for how to enable code generation using the UI will come at a later date.
 
-As the maintainer of this project, please make a few updates:
+Please note that these instructions may be updated as needed during the preview.
 
-- Improving this README.MD file to provide a great experience
-- Updating SUPPORT.MD with content about this project's support experience
-- Understanding the security reporting process in SECURITY.MD
-- Remove this section from the README
+### SDK
+When using AutoML via the SDK, you will need to ensure that you call `experiment.submit()` from a Conda environment that contains the private preview SDK.
+
+To create a new Conda environment with the private preview SDK, make sure you have Anaconda or Miniconda installed, then run these commands:
+```bash
+conda env create -f automl_codegen_preview.yml
+conda activate automl_codegen_preview
+```
+
+To update the private preview SDK when a new version is released, run these commands:
+```bash
+conda activate automl_codegen_preview
+pip install --upgrade --extra-index-url https://azuremlsdktestpypi.azureedge.net/codegen "azureml-train-automl<0.1.50"
+```
+
+You will know if you are using a private preview version by running the following code snippet:
+
+```python
+from azureml.core.conda_dependencies import CondaDependencies
+print(CondaDependencies.sdk_origin_url())
+```
+
+The return value should be `https://azuremlsdktestpypi.azureedge.net/codegen`.
+
+In addition, before submitting your experiment, you will need to set the following flag in AutoMLConfig:
+* `enable_code_generation=True`
+
+Thus, your AutoMLConfig will look something like this:
+
+```python
+config = AutoMLConfig(
+    task="classification",
+    training_data=data,
+    label_column_name="label",
+    compute_target=compute_target,
+    enable_code_generation=True
+)
+```
+
+Note that currently, when running with a private preview SDK, an image build step is required before the experiment starts. This is handled for you but will add to overall experiment runtime.
+
+You can retrieve the code gen artifacts via the UI, or via calling `run.download_file("outputs/generated_code/script.py", "script.py")` and `run.download_file("outputs/generated_code/script_run_notebook.ipynb", "script_run_notebook.ipynb")`.
 
 ## Contributing
 
