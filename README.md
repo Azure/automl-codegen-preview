@@ -6,7 +6,7 @@ To start using the AutoML Code Gen Preview, at this time you must use the AzureM
 Please note that these instructions may be updated as needed during the preview.
 
 ### SDK
-When using AutoML via the SDK, you will need to ensure that you call `experiment.submit()` from a Conda environment that contains the private preview SDK.
+When using AutoML via the SDK, you will need to ensure that you call `experiment.submit()` from a Conda environment that contains the private preview SDK. In addition, this feature is only enabled for experiments running on a remote compute target.
 
 To create a new Conda environment with the private preview SDK, make sure you have Anaconda or Miniconda installed, then run these commands:
 ```bash
@@ -46,7 +46,19 @@ config = AutoMLConfig(
 
 Note that currently, when running with a private preview SDK, an image build step is required before the experiment starts. This is handled for you but will add to overall experiment runtime.
 
-You can retrieve the code gen artifacts via the UI, or via calling `run.download_file("outputs/generated_code/script.py", "script.py")` and `run.download_file("outputs/generated_code/script_run_notebook.ipynb", "script_run_notebook.ipynb")`.
+You can retrieve the code gen artifacts via the UI, or by running the following code:
+
+```python
+remote_run.download_file("outputs/generated_code/script.py", "script.py")
+remote_run.download_file("outputs/generated_code/script_run_notebook.ipynb", "script_run_notebook.ipynb")
+```
+
+## Known issues/limitations
+Listed below are the currently known issues and limitations of code generation.
+
+* Currently only classification, regression, and forecasting tasks are supported.
+* Streaming datasets are not supported.
+* DNN trained models are not supported.
 
 ## Contributing
 
