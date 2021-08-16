@@ -1,7 +1,7 @@
 # AutoML Code Gen Preview
 
 ## Setup
-To start using the AutoML Code Gen Preview, at this time you must use the AzureML Python SDK. Instructions for how to enable code generation using the UI will come at a later date.
+To start using the AutoML Code Gen Preview, the feature must be enabled when submitting the experiment.
 
 Please note that these instructions may be updated as needed during the preview.
 
@@ -44,33 +44,24 @@ config = AutoMLConfig(
 )
 ```
 
-Note that currently, when running with a private preview SDK, an image build step is required before the experiment starts. This is handled for you but will add to overall experiment runtime.
-
-You can retrieve the code gen artifacts via the UI, or by running the following code:
+You can retrieve the code gen artifacts via the UI (see _Viewing Code Generation from the UI_), or by running the following code:
 
 ```python
 remote_run.download_file("outputs/generated_code/script.py", "script.py")
 remote_run.download_file("outputs/generated_code/script_run_notebook.ipynb", "script_run_notebook.ipynb")
 ```
 
-## Known issues/limitations
-Listed below are the currently known issues and limitations of code generation.
-
-* Currently only classification, regression, and forecasting tasks are supported.
-* Streaming datasets are not supported.
-* DNN trained models are not supported.
-* `DataTransformer._engineered_feature_names_class` is currently loaded from a bytestring to map raw to engineered feature names, which may be problematic if the list of featurizers changes.
-
 ### UI
 **Enabling Code Generation from the UI:** 
+_NOTE: Currently, when code gen is enabled via the UI, the public version of the SDK (from PyPi) will be used. Thus, you may be missing bugfixes or additions not available in the public version. This will be addressed in the future._
 
 Trigger an Automated ML run using the following url: 
 
 [https://ml.azure.com/automl/startrun?wsid=/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}&flight=AdditionalAmlSetting=false](https://ml.azure.com/automl/startrun?wsid=/subscriptions/%7bsubscriptionId%7d/resourceGroups/%7bresourceGroupName%7d/providers/Microsoft.MachineLearningServices/workspaces/%7bworkspaceName%7d&flight=AdditionalAmlSetting=false)
 
-make sure to fill in the fields in the { }. The important addition here is the &flight=AdditionalAmlSetting=false at the end of the url.
+Make sure to fill in the fields in the { }. The important addition here is the `&flight=AdditionalAmlSetting=false` at the end of the url.
 
-**Viewing Code Generation from the UI:** 
+## Viewing Code Generation from the UI
 
 Once a child run is completed, you will be able to view the generated code through the UI by clicking the “View generated code” button which can be viewed in either the Models tab in the parent run page (see first image) or on the top of the child run page (see second image).
 
@@ -80,6 +71,14 @@ Once a child run is completed, you will be able to view the generated code throu
 
 After clicking this button, you will be redirected to the Notebooks portal extension where you can run the generated code.
 
+## Known issues/limitations
+Listed below are the currently known issues and limitations of code generation.
+
+* When running with a private preview SDK, an image build step is currently required before the experiment starts. This is handled for you, but will add to overall experiment runtime. The image build step will be removed in a future release.
+* Currently only classification, regression, and forecasting tasks are supported.
+* Streaming datasets are not supported.
+* DNN trained models are not supported.
+* `DataTransformer._engineered_feature_names_class` is currently loaded from a bytestring to map raw to engineered feature names, which may be problematic if the list of featurizers changes.
 
 ## Contributing
 
