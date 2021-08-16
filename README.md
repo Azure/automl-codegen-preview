@@ -61,6 +61,26 @@ Listed below are the currently known issues and limitations of code generation.
 * DNN trained models are not supported.
 * `DataTransformer._engineered_feature_names_class` is currently loaded from a bytestring to map raw to engineered feature names, which may be problematic if the list of featurizers changes.
 
+###UI
+**Enabling Code Generation from the UI:** 
+
+Trigger an Automated ML run using the following url: 
+
+[https://ml.azure.com/automl/startrun?wsid=/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}&flight=AdditionalAmlSetting=false](https://ml.azure.com/automl/startrun?wsid=/subscriptions/%7bsubscriptionId%7d/resourceGroups/%7bresourceGroupName%7d/providers/Microsoft.MachineLearningServices/workspaces/%7bworkspaceName%7d&flight=AdditionalAmlSetting=false)
+
+make sure to fill in the fields in the { }. The important addition here is the &flight=AdditionalAmlSetting=false at the end of the url.
+
+**Viewing Code Generation from the UI:** 
+
+Once a child run is completed, you will be able to view the generated code through the UI by clicking the “View generated code” button which can be viewed in either the Models tab in the parent run page (see first image) or on the top of the child run page (see second image).
+
+![models tab view generate code button](Images/ParentModelsViewGenerateCodeBtn.png)
+
+![child run page view generated code button](Images/ChildViewGeneratedCodeBtn.png)
+
+After clicking this button, you will be redirected to the Notebooks portal extension where you can run the generated code.
+
+
 ## Contributing
 
 This project welcomes contributions and suggestions.  Most contributions require you to agree to a
