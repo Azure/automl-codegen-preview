@@ -44,6 +44,8 @@ config = AutoMLConfig(
 )
 ```
 
+**IMPORTANT NOTE:** Due to temporal dependency to indexed packages needed to make code-gen work, before training with "enable_code_generation=True" the process will need to create a specific Docker image for it, which causes significant delay on the start of the featurization and training (around 15 min). This issue is temporal and will be eliminated when moving to PUBLIC PREVIEWS and more mature PRIVATE PREVIEWS. 
+
 You can retrieve the code gen artifacts via the UI (see _Viewing Code Generation from the UI_), or by running the following code:
 
 ```python
