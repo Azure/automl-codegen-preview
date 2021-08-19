@@ -31,6 +31,7 @@ There are multiple actions you might want to do with this generated model traini
 ## Supported features
 
 The current supported scenarios by AutoML Code Generation are:
+
 •	Model data pre-process (Featurization and Scaling)
 •	Classification models
 •	Regression models
