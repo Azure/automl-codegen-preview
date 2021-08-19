@@ -3,11 +3,13 @@
 ## What is this new feature?
 
 ‘AutoML Code Generation’ makes AutoML a ‘White Box’ AutoML solution by allowing the user to select any AutoML trained model (winner or child model) and generate the Python training code that created that specific model. Then, explore, customize, and retrain the model using Python before deploying to Azure ML Endpoints or your selected inference execution environment.
+
 Basically, with this feature AutoML generates Python code showing you how data was preprocessed and how algorithms were used exactly, so not only you can understand what AutoML did, you can also reuse and customize that code for further manual tweaking and tuning. 
 
 ![image](https://user-images.githubusercontent.com/1712635/130136566-301b0b06-a7ff-4ec4-8a00-e4dabdfce20e.png)
 
 So, for instance, the generated Python code for a selected model would be provided in a Jupyter notebook and .py files that will have Python code using OSS libraries under the covers such as Scikit-Learn, LightGBM, Auto-Arima, Prophet, Pandas DataFrame, etc. implementing the following actions:
+
 -	Featurization and data transformation 
 -	Scaling 
 -	Training 
