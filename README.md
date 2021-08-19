@@ -71,6 +71,13 @@ Once a child run is completed, you will be able to view the generated code throu
 
 After clicking this button, you will be redirected to the Notebooks portal extension where you can run the generated code.
 
+## Generated Code Walkthrough: Notebook and .py file code
+
+Please, review this additional walkthrough example in order to understand the generated code:
+
+[Generated Code Walkthrough: Notebook and .py file code](https://github.com/Azure/automl-codegen-preview/blob/main/example/EXAMPLE.md)
+
+
 ## Known issues/limitations
 Listed below are the currently known issues and limitations of code generation.
 
