@@ -32,18 +32,20 @@ There are multiple actions you might want to do with this generated model traini
 
 The current supported scenarios by AutoML Code Generation are:
 
-•	Model data pre-process (Featurization and Scaling)
-•	Classification models
-•	Regression models
-•	Time Series Forecasting models 
+- Model data pre-process (Featurization and Scaling)
+- Classification models
+- Regression models
+- Time Series Forecasting models 
 
 
 ## Setup
+
 To start using the AutoML Code Gen Preview, the feature must be enabled when submitting the experiment.
 
 Please note that these instructions may be updated as needed during the preview.
 
 ### SDK
+
 When using AutoML via the SDK, you will need to ensure that you call `experiment.submit()` from a Conda environment that contains the private preview SDK. In addition, this feature is only enabled for experiments running on a remote compute target.
 
 To create a new Conda environment with the private preview SDK, make sure you have Anaconda or Miniconda installed, then run these commands:
@@ -92,6 +94,7 @@ remote_run.download_file("outputs/generated_code/script_run_notebook.ipynb", "sc
 ```
 
 ### UI
+
 **Enabling Code Generation from the UI:** 
 _NOTE: Currently, when code gen is enabled via the UI, the public version of the SDK (from PyPi) will be used. Thus, you may be missing bugfixes or additions not available in the public version. This will be addressed in the future._
 
