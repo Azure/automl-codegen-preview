@@ -1,4 +1,39 @@
-# AutoML Code Gen Preview
+# AutoML Code Generation - Preview
+
+## What is this new feature?
+
+‘AutoML Code Generation’ makes AutoML a ‘White Box’ AutoML solution by allowing the user to select any AutoML trained model (winner or child model) and generate the Python training code that created that specific model. Then, explore, customize, and retrain the model using Python before deploying to Azure ML Endpoints or your selected inference execution environment.
+Basically, with this feature AutoML generates Python code showing you how data was preprocessed and how algorithms were used exactly, so not only you can understand what AutoML did, you can also reuse and customize that code for further manual tweaking and tuning. 
+
+![image](https://user-images.githubusercontent.com/1712635/130136566-301b0b06-a7ff-4ec4-8a00-e4dabdfce20e.png)
+
+So, for instance, the generated Python code for a selected model would be provided in a Jupyter notebook and .py files that will have Python code using OSS libraries under the covers such as Scikit-Learn, LightGBM, Auto-Arima, Prophet, Pandas DataFrame, etc. implementing the following actions:
+-	Featurization and data transformation 
+-	Scaling 
+-	Training 
+
+Simplified code example:
+
+![image](https://user-images.githubusercontent.com/1712635/130136608-0419bdcf-0658-49b0-91bf-f037566213c8.png)
+
+At this point, the generated model training code is not really AutoML anymore but it’s just about Python libraries using OSS libraries such as Scikit-Learn algorithms, LightGBM, Auto-Arima, etc. which allows you to customize/tune that code, re-train and deploy.
+
+## What can you do with this generated model training code?
+
+There are multiple actions you might want to do with this generated model training code:
+
+-	**LEARN:** Learn what featurization process and hyperparameters is the model’s algorithm using.
+-	**TRACK/VERSION/AUDIT:** Train the model with the generated code and store versioned code to track what specific training code is used by the model to be deployed to production (Usually required by certain auditability regulations and organization’s policies).
+-	**CUSTOMIZE:** Customize the training code (i.e. changing hyperparameters applying your ML and algorithms skills/experience) and re-train a new model with your customized/extended code.
+
+## Supported features
+
+The current supported scenarios by AutoML Code Generation are:
+•	Model data pre-process (Featurization and Scaling)
+•	Classification models
+•	Regression models
+•	Time Series Forecasting models 
+
 
 ## Setup
 To start using the AutoML Code Gen Preview, the feature must be enabled when submitting the experiment.
@@ -88,6 +123,15 @@ Listed below are the currently known issues and limitations of code generation.
 * Streaming datasets are not supported.
 * DNN trained models are not supported.
 * `DataTransformer._engineered_feature_names_class` is currently loaded from a bytestring to map raw to engineered feature names, which may be problematic if the list of featurizers changes.
+
+## Sign up for this Private Preview
+
+How do I sign up for this Private Preview of AutoML ‘CodeGen’? 
+
+•	Reach out to - cesardl@microsoft.com to enable your Azure subscription for this Private Preview feature.
+
+•	In addition, fill out this form - [Private Preview sign up for 'AutoML CodeGen'](https://forms.office.com/r/6fWqMFApvE)
+
 
 ## Contributing
 
