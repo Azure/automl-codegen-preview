@@ -100,9 +100,9 @@ _NOTE: Currently, when code gen is enabled via the UI, the public version of the
 
 Trigger an Automated ML run using the following url: 
 
-[https://ml.azure.com/automl/startrun?wsid=/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}&flight=AdditionalAmlSetting=false](https://ml.azure.com/automl/startrun?wsid=/subscriptions/%7bsubscriptionId%7d/resourceGroups/%7bresourceGroupName%7d/providers/Microsoft.MachineLearningServices/workspaces/%7bworkspaceName%7d&flight=AdditionalAmlSetting=false)
+[https://ml.azure.com/automl/startrun?wsid=/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}](https://ml.azure.com/automl/startrun?wsid=/subscriptions/%7bsubscriptionId%7d/resourceGroups/%7bresourceGroupName%7d/providers/Microsoft.MachineLearningServices/workspaces/%7bworkspaceName%7d)
 
-Make sure to fill in the fields in the { }. The important addition here is the `&flight=AdditionalAmlSetting=false` at the end of the url.
+Make sure to fill in the fields in the { }
 
 ## Viewing Code Generation from the UI
 
@@ -120,15 +120,6 @@ Please, review this additional walkthrough example in order to understand the ge
 
 [Generated Code Walkthrough: Notebook and .py file code](https://github.com/Azure/automl-codegen-preview/blob/main/example/EXAMPLE.md)
 
-
-## Known issues/limitations
-Listed below are the currently known issues and limitations of code generation.
-
-* When running with a private preview SDK, an image build step is currently required before the experiment starts. This is handled for you, but will add to overall experiment runtime. The image build step will be removed in a future release when using a curated environment in production SDK instead of private indexes. This could be done even when using stable publicly/production Previews.  
-* Currently only classification, regression, and forecasting tasks are supported.
-* Streaming datasets are not supported.
-* DNN trained models are not supported.
-* `DataTransformer._engineered_feature_names_class` is currently loaded from a bytestring to map raw to engineered feature names, which may be problematic if the list of featurizers changes.
 
 ## Sign up for this Private Preview
 
