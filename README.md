@@ -44,7 +44,7 @@ To start using the AutoML Code Gen Preview, the feature must be enabled when sub
 
 Please note that these instructions may be updated as needed during the preview.
 
-### SDK
+### Install Azure ML SDK private preview version 
 
 When using AutoML via the SDK, you will need to ensure that you call `experiment.submit()` from a Conda environment that contains the private preview SDK. In addition, this feature is only enabled for experiments running on a remote compute target.
 
